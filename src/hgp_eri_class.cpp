@@ -1,6 +1,8 @@
 #include "hgp_eri_class.hpp"
 #include "basis.hpp"
 #include "eri_class.hpp"
+#include "hgp_hrr.hpp"
+#include "hgp_vrr.hpp"
 #include "vec3d.hpp"
 #include <vector>
 #include <cstddef>
@@ -88,53 +90,52 @@ void hgp_vrr_primitive(
     double zetaCD, double kCD, double Qx, double Qy, double Qz, double QCx, double QCy, double QCz
 ) {
     assert(e >= f);
-    if (e = 0 && f = 0) hgp_vrr_0_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 1 && f = 0) hgp_vrr_1_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 1 && f = 1) hgp_vrr_1_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 2 && f = 0) hgp_vrr_2_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 2 && f = 1) hgp_vrr_2_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 2 && f = 2) hgp_vrr_2_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 3 && f = 0) hgp_vrr_3_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 3 && f = 1) hgp_vrr_3_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 3 && f = 2) hgp_vrr_3_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 3 && f = 3) hgp_vrr_3_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 4 && f = 0) hgp_vrr_4_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 4 && f = 1) hgp_vrr_4_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 4 && f = 2) hgp_vrr_4_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 4 && f = 3) hgp_vrr_4_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 4 && f = 4) hgp_vrr_4_4_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 5 && f = 0) hgp_vrr_5_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 5 && f = 1) hgp_vrr_5_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 5 && f = 2) hgp_vrr_5_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 5 && f = 3) hgp_vrr_5_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 5 && f = 4) hgp_vrr_5_4_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 5 && f = 5) hgp_vrr_5_5_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 6 && f = 0) hgp_vrr_6_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 6 && f = 1) hgp_vrr_6_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 6 && f = 2) hgp_vrr_6_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 6 && f = 3) hgp_vrr_6_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 6 && f = 4) hgp_vrr_6_4_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 6 && f = 5) hgp_vrr_6_5_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 6 && f = 6) hgp_vrr_6_6_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 7 && f = 0) hgp_vrr_7_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 7 && f = 1) hgp_vrr_7_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 7 && f = 2) hgp_vrr_7_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 7 && f = 3) hgp_vrr_7_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 7 && f = 4) hgp_vrr_7_4_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 7 && f = 5) hgp_vrr_7_5_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 7 && f = 6) hgp_vrr_7_6_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 7 && f = 7) hgp_vrr_7_7_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 8 && f = 0) hgp_vrr_8_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 8 && f = 1) hgp_vrr_8_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 8 && f = 2) hgp_vrr_8_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 8 && f = 3) hgp_vrr_8_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 8 && f = 4) hgp_vrr_8_4_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 8 && f = 5) hgp_vrr_8_5_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 8 && f = 6) hgp_vrr_8_6_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 8 && f = 7) hgp_vrr_8_7_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
-    if (e = 8 && f = 8) hgp_vrr_8_8_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 0 && f == 0) hgp_vrr_0_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 1 && f == 0) hgp_vrr_1_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 1 && f == 1) hgp_vrr_1_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 2 && f == 0) hgp_vrr_2_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 2 && f == 1) hgp_vrr_2_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 2 && f == 2) hgp_vrr_2_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 3 && f == 0) hgp_vrr_3_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 3 && f == 1) hgp_vrr_3_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 3 && f == 2) hgp_vrr_3_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 3 && f == 3) hgp_vrr_3_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 4 && f == 0) hgp_vrr_4_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 4 && f == 1) hgp_vrr_4_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 4 && f == 2) hgp_vrr_4_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 4 && f == 3) hgp_vrr_4_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    if (e == 4 && f == 4) hgp_vrr_4_4_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 5 && f == 0) hgp_vrr_5_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 5 && f == 1) hgp_vrr_5_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 5 && f == 2) hgp_vrr_5_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 5 && f == 3) hgp_vrr_5_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 5 && f == 4) hgp_vrr_5_4_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 5 && f == 5) hgp_vrr_5_5_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 6 && f == 0) hgp_vrr_6_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 6 && f == 1) hgp_vrr_6_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 6 && f == 2) hgp_vrr_6_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 6 && f == 3) hgp_vrr_6_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 6 && f == 4) hgp_vrr_6_4_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 6 && f == 5) hgp_vrr_6_5_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 6 && f == 6) hgp_vrr_6_6_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 7 && f == 0) hgp_vrr_7_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 7 && f == 1) hgp_vrr_7_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 7 && f == 2) hgp_vrr_7_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 7 && f == 3) hgp_vrr_7_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 7 && f == 4) hgp_vrr_7_4_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 7 && f == 5) hgp_vrr_7_5_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 7 && f == 6) hgp_vrr_7_6_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 7 && f == 7) hgp_vrr_7_7_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 8 && f == 0) hgp_vrr_8_0_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 8 && f == 1) hgp_vrr_8_1_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 8 && f == 2) hgp_vrr_8_2_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 8 && f == 3) hgp_vrr_8_3_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 8 && f == 4) hgp_vrr_8_4_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 8 && f == 5) hgp_vrr_8_5_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 8 && f == 6) hgp_vrr_8_6_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 8 && f == 7) hgp_vrr_8_7_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
+    // if (e == 8 && f == 8) hgp_vrr_8_8_(result, zetaAB, kAB, Px, Py, Pz, PAx, PAy, PAz, zetaCD, kCD, Qx, Qy, Qz, QCx, QCy, QCz);
 }
-
 
 
 // (e0|xx) --> (ab|xx)
@@ -219,7 +220,7 @@ EriClass hgp_hrr_ket(
 
         // copy data to returned EriClass
         for (std::size_t j = 0; j < xxcd.size(); ++j) {
-            ret(i, j) = abxx[j];
+            ret(i, j) = xxcd[j];
         }
     }
 
@@ -233,21 +234,21 @@ std::vector<double> hgp_hrr(
     std::size_t a, std::size_t b
 ) {
     assert(a >= b);
-    if (a = 0 && b = 0) return hgp_hrr_0_0_(hrrInp, x, y, z);
-    if (a = 1 && b = 0) return hgp_hrr_1_0_(hrrInp, x, y, z);
-    if (a = 1 && b = 1) return hgp_hrr_1_1_(hrrInp, x, y, z);
-    if (a = 2 && b = 0) return hgp_hrr_2_0_(hrrInp, x, y, z);
-    if (a = 2 && b = 1) return hgp_hrr_2_1_(hrrInp, x, y, z);
-    if (a = 2 && b = 2) return hgp_hrr_2_2_(hrrInp, x, y, z);
-    if (a = 3 && b = 0) return hgp_hrr_3_0_(hrrInp, x, y, z);
-    if (a = 3 && b = 1) return hgp_hrr_3_1_(hrrInp, x, y, z);
-    if (a = 3 && b = 2) return hgp_hrr_3_2_(hrrInp, x, y, z);
-    if (a = 3 && b = 3) return hgp_hrr_3_3_(hrrInp, x, y, z);
-    if (a = 4 && b = 0) return hgp_hrr_4_0_(hrrInp, x, y, z);
-    if (a = 4 && b = 1) return hgp_hrr_4_1_(hrrInp, x, y, z);
-    if (a = 4 && b = 2) return hgp_hrr_4_2_(hrrInp, x, y, z);
-    if (a = 4 && b = 3) return hgp_hrr_4_3_(hrrInp, x, y, z);
-    if (a = 4 && b = 4) return hgp_hrr_4_4_(hrrInp, x, y, z);
+    if (a == 0 && b == 0) return hgp_hrr_0_0_(hrrInp, x, y, z);
+    if (a == 1 && b == 0) return hgp_hrr_1_0_(hrrInp, x, y, z);
+    if (a == 1 && b == 1) return hgp_hrr_1_1_(hrrInp, x, y, z);
+    if (a == 2 && b == 0) return hgp_hrr_2_0_(hrrInp, x, y, z);
+    if (a == 2 && b == 1) return hgp_hrr_2_1_(hrrInp, x, y, z);
+    if (a == 2 && b == 2) return hgp_hrr_2_2_(hrrInp, x, y, z);
+    if (a == 3 && b == 0) return hgp_hrr_3_0_(hrrInp, x, y, z);
+    if (a == 3 && b == 1) return hgp_hrr_3_1_(hrrInp, x, y, z);
+    if (a == 3 && b == 2) return hgp_hrr_3_2_(hrrInp, x, y, z);
+    if (a == 3 && b == 3) return hgp_hrr_3_3_(hrrInp, x, y, z);
+    if (a == 4 && b == 0) return hgp_hrr_4_0_(hrrInp, x, y, z);
+    if (a == 4 && b == 1) return hgp_hrr_4_1_(hrrInp, x, y, z);
+    if (a == 4 && b == 2) return hgp_hrr_4_2_(hrrInp, x, y, z);
+    if (a == 4 && b == 3) return hgp_hrr_4_3_(hrrInp, x, y, z);
+    if (a == 4 && b == 4) return hgp_hrr_4_4_(hrrInp, x, y, z);
     return std::vector<double>();
 }
 

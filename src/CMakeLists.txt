@@ -1,7 +1,14 @@
+
+add_subdirectory(hgp_hrr_code)
+add_subdirectory(hgp_vrr_code)
+
+
 add_library(
     nhfint
     basis.cpp
     eri_class.cpp
+    hgp_eri_class.cpp
+    eri.cpp
 )
 
 target_include_directories(
@@ -12,6 +19,8 @@ target_include_directories(
 target_link_libraries(
     nhfint PUBLIC
     nhfmath
+    hgphrrlib
+    hgpvrrlib
 )
 
 

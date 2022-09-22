@@ -1,6 +1,7 @@
 #include "eri.hpp"
 #include "basis.hpp"
 #include "eri_class.hpp"
+#include "hgp_eri_class.hpp"
 #include <vector>
 #include <cstddef>
 

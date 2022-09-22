@@ -5,6 +5,17 @@
 
 namespace nhfInt {
 
+EriClass::EriClass()
+: angA(0), angB(0), angC(0), angD(0),
+  nbsA(0), nbsB(0), nbsC(0), nbsD(0)
+{
+    num4 = nbsD;
+    num3 = nbsC * num4;
+    num2 = nbsB * num3;
+
+    eri = std::vector<double>(size());
+}
+
 EriClass::EriClass(
     std::size_t a, std::size_t b, 
     std::size_t c, std::size_t d )

@@ -15,6 +15,9 @@ public:
     std::vector<double> eri;
 
 public:
+
+    EriClass();
+
     EriClass(std::size_t a, std::size_t b, 
              std::size_t c, std::size_t d);
 
