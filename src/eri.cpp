@@ -47,9 +47,9 @@ std::vector<double> hgp_eri(const BasisSet &bs) {
             EriClass ec = hgp_eri_class(a, b, c, d, pds);
 
             for (std::size_t ai = 0; ai < ec.nbsA; ++ai) {
-            for (std::size_t bj = 0; bj < ec.nbsA; ++bj) {
-            for (std::size_t ck = 0; ck < ec.nbsA; ++ck) {
-            for (std::size_t dl = 0; dl < ec.nbsA; ++dl) {
+            for (std::size_t bj = 0; bj < ec.nbsB; ++bj) {
+            for (std::size_t ck = 0; ck < ec.nbsC; ++ck) {
+            for (std::size_t dl = 0; dl < ec.nbsD; ++dl) {
                 // position of this eri in the global
                 std::size_t iPos = idx4(a.bsBeg + ai, b.bsBeg + bj,
                                         c.bsBeg + ck, d.bsBeg + dl);

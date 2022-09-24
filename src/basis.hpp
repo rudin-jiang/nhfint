@@ -22,7 +22,7 @@ public:
     Basis();
     Basis(std::size_t bsBeg, std::size_t gsBeg, std::size_t angMom,
           const VecReal &alpha, const VecReal &coeff, const Vec3d &centre);
-    Basis(std::string atomType, std::string basisFile, const Vec3d &centre);
+    // Basis(std::string atomType, std::string basisFile, const Vec3d &centre);
 
     std::size_t basis_size() const
     { return (angMom+1) * (angMom+2) / 2; }
@@ -38,6 +38,7 @@ public:
 
     BasisSet();
     BasisSet(std::size_t nBasis);
+    BasisSet(std::string basisFile, std::string atomType, const Vec3d &centre);
 
     // access
     Basis   operator[](std::size_t i) const;

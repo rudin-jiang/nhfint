@@ -1,9 +1,11 @@
 #include "basis.hpp"
 #include "vec3d.hpp"
+#include "stropt.hpp"
 #include <vector>
 #include <string>
 #include <cstddef>
 #include <cmath>
+#include <fstream>
 
 // pow(2.0, 0.5) * pow(pi, 1.25), used in KAB and KCD
 // in function hgp_vrr_contracted
@@ -20,16 +22,15 @@ Basis::Basis(
 ) : bsBeg(bsBeg), gsBeg(gsBeg), angMom(angMom),
     alpha(alpha), coeff(coeff), centre(centre) {}
 
-// TODO
-// Basis::Basis(std::string atomType, std::string basisFile, const Vec3d &centre)
-// {}
-
 
 /*          BasisSet            */
 BasisSet::BasisSet() {}
 
 BasisSet::BasisSet(std::size_t nBasis)
 : bsData(std::vector<Basis>(nBasis)) {}
+
+// BasisSet::BasisSet(std::string basisFile, std::string atomType, const Vec3d &centre) {}
+
 
 Basis   BasisSet::operator[](std::size_t i) const
 { return bsData[i]; }

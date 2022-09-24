@@ -85,7 +85,7 @@ EriClass hgp_vrr_contracted(
 
 // result has already been allocateed when hgp_vrr_primitive is called 
 void hgp_vrr_primitive(
-    std::vector<double> result, std::size_t e, std::size_t f,
+    std::vector<double> &result, std::size_t e, std::size_t f,
     double zetaAB, double kAB, double Px, double Py, double Pz, double PAx, double PAy, double PAz,
     double zetaCD, double kCD, double Qx, double Qy, double Qz, double QCx, double QCy, double QCz
 ) {

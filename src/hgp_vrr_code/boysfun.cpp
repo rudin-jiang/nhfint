@@ -1554,7 +1554,7 @@ double boysfun(int n, double x) {
 
     if (x > 150.0) {
         x = 1.0 / std::sqrt(x);
-        return largeValueCoeff[n] / std::pow(x, 2*n+1);
+        return largeValueCoeff[n] * std::pow(x, 2*n+1);
     }
 
     size_t iX = size_t(x * 10.0 + 0.5);
